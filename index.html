@@ -1,143 +1,188 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="id">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Guru</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --violet-dark: #4b1c71;
+            --violet-main: #6a1fb0;
+            --violet-light: #b48cff;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.25);
+        }
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        body {
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at top, var(--violet-light), var(--violet-main), var(--violet-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
 
-    <!-- My CSS -->
-    <link rel="stylesheet" href="style.css">
+        .profile-card {
+            width: 100%;
+            max-width: 900px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(18px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            overflow: hidden;
+        }
 
-    <title>Muchamad Faruq</title>
+        .profile-photo {
+            background: linear-gradient(160deg, var(--violet-main), var(--violet-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .photo-wrapper {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 4px solid rgba(255, 255, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-content {
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .profile-header h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .profile-header p {
+            margin-top: 8px;
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .info-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 18px 20px;
+        }
+
+        .info-item span {
+            display: block;
+            font-size: 0.8rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 6px;
+        }
+
+        .info-item strong {
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .footer-note {
+            margin-top: auto;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        @media (max-width: 768px) {
+            .profile-card {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-photo {
+                padding: 32px;
+            }
+
+            .profile-content {
+                padding: 32px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Navbar start -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
-        <div class="container">
-            <a class="navbar-brand" href="#">Muchamad Faruq</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contacts">Contacts</a>
-                    </li>
-                </ul>
+    <div class="profile-card">
+        <div class="profile-photo">
+            <div class="photo-wrapper">
+                <!-- Ganti src dengan foto Anda -->
+                <img src="https://faruq.dwisma.id/img/profile.jpeg" alt="Foto Profil Muchamad Faruq">
             </div>
         </div>
-    </nav>
-    <!-- Navbar end -->
 
-    <!-- Jumbotron -->
-    <section class="jumbotron text-center" id="home">
-        <img src="img/profile.jpeg" alt="Muchamad Faruq" style="width: 200px;" class="rounded-circle img-thumbnail">
-        <p class="display-6 fw-bolder">Muchamad Faruq, S.Pd., Gr.</p>
-        <p class="lead fw-bold">Teacher at SMAN 2 Mengwi | Dwisma</p>
+        <div class="profile-content">
+            <div class="profile-header">
+                <h1>Muchamad Faruq</h1>
+                <p>Guru Sosiologi • SMA Negeri 2 Mengwi</p>
+            </div>
 
-        <!-- Link -->
-        <p class="lead fw-bold">Sites :
-            <a href="https://belajarsosiologi.my.id" target="_blank" class="text-reset mx-2">belajarsosiologi.my.id</a>
-            <a href="https://faruqadvmikhmon.my.id" target="_blank" class="text-reset mx-2">faruqadvmikhmon.my.id</a>
-
-        </p>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#fff" fill-opacity="1"
-                d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-            </path>
-        </svg>
-    </section>
-    <!-- Jumbotron end -->
-
-    <!-- About -->
-    <section id="about">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col">
-                    <h2>About Me</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span>Tempat, Tanggal Lahir</span>
+                    <strong>Jakarta, 26 Maret 1996</strong>
+                </div>
+                <div class="info-item">
+                    <span>Jenis Kelamin</span>
+                    <strong>Laki-laki</strong>
+                </div>
+                <div class="info-item">
+                    <span>Mata Pelajaran</span>
+                    <strong>Sosiologi</strong>
+                </div>
+                <div class="info-item">
+                    <span>Institusi</span>
+                    <strong>SMA Negeri 2 Mengwi</strong>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <p>Hi there! Im Muchamad Faruq, a passionate Sociology teacher with a keen interest in technology.
-                        My journey in education is driven by a deep commitment to understanding and exploring the
-                        intricacies of human societies, and I love bringing these insights to my students in dynamic and
-                        engaging ways.</p>
-                    <p>Outside the classroom, I’m an avid tech enthusiast. Whether it's diving into the latest gadgets,
-                        exploring emerging digital trends, or tinkering with innovative tools, I find that technology
-                        offers endless opportunities to enhance both teaching and learning. This fusion of sociology and
-                        technology fuels my creative approach to education, allowing me to connect with students on
-                        multiple levels.
-                    </p>
-                    <p>In my free time, you’ll likely find me [mention a specific tech hobby or project, if applicable],
-                        always on the lookout for new ways to blend my passions. I’m excited about the possibilities
-                        that lie at the intersection of technology and education and am always eager to collaborate with
-                        like-minded individuals.
-                    </p>
-                    <p>
-                        Thanks for stopping by to learn more about me. Let’s connect and explore how we can leverage
-                        technology to make a meaningful impact in education!</p>
-                </div>
+
+            <div class="footer-note">
+                Profil profesional pendidik dengan fokus pada pengembangan pemikiran kritis dan kesadaran sosial.
             </div>
         </div>
-    </section>
-    <!-- About end -->
-
-    <!-- Footer -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary mt-5 fixed-bottom">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="https://sman2mengwi.sch.id/" target="_blank"><img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStMCvaC9uFA2ax4DT3zW0Px31IexqIXkQ19g&s"
-                    width="50" height="50"></a>
-            <a class="navbar-brand" href="https://sman2mengwi.sch.id/" target="_blank"><b>Dwisma</b> | SMAN 2 Mengwi</a>
-            <div class="navbar-collapse">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link"
-                            href="https://www.youtube.com/channel/UCz6SfxL3mwHP1Xjz_JvBqvg" target="_blank"><i
-                                class="bi bi-youtube m-1"></i>official
-                            dwisma</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://www.instagram.com/osisdwisma"
-                            target="_blank"><i class="bi bi-instagram m-1"></i>osisdwisma</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="https://web.facebook.com/SMAN2MENGWI"
-                            target="_blank"><i class="bi bi-facebook m-1"></i>SMAN 2
-                            Mengwi</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
+    </div>
 </body>
 
 </html>
