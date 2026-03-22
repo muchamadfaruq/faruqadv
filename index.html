@@ -1,188 +1,738 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth dark">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profil Guru</title>
+    <title>Muchamad Faruq - Portfolio & Resume</title>
+
+    <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Boxicons (Icons) -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <style>
+        /* Base Colors Variables (Violet as Default) */
         :root {
-            --violet-dark: #4b1c71;
-            --violet-main: #6a1fb0;
-            --violet-light: #b48cff;
-            --glass-bg: rgba(255, 255, 255, 0.15);
-            --glass-border: rgba(255, 255, 255, 0.25);
+            --brand-50: #f5f3ff;
+            --brand-100: #ede9fe;
+            --brand-200: #ddd6fe;
+            --brand-300: #c4b5fd;
+            --brand-400: #b48cff;
+            --brand-500: #8b5cf6;
+            --brand-600: #6a1fb0;
+            --brand-700: #4b1c71;
+            --brand-800: #5b21b6;
+            --brand-900: #4c1d95;
+            --brand-950: #2e1065;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        /* Blue Theme */
+        :root[data-theme="blue"] {
+            --brand-50: #eff6ff;
+            --brand-100: #dbeafe;
+            --brand-200: #bfdbfe;
+            --brand-300: #93c5fd;
+            --brand-400: #60a5fa;
+            --brand-500: #3b82f6;
+            --brand-600: #2563eb;
+            --brand-700: #1d4ed8;
+            --brand-800: #1e40af;
+            --brand-900: #1e3a8a;
+            --brand-950: #172554;
         }
 
-        body {
-            min-height: 100vh;
-            font-family: 'Poppins', sans-serif;
-            background: radial-gradient(circle at top, var(--violet-light), var(--violet-main), var(--violet-dark));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
+        /* Emerald/Green Theme */
+        :root[data-theme="emerald"] {
+            --brand-50: #ecfdf5;
+            --brand-100: #d1fae5;
+            --brand-200: #a7f3d0;
+            --brand-300: #6ee7b7;
+            --brand-400: #34d399;
+            --brand-500: #10b981;
+            --brand-600: #059669;
+            --brand-700: #047857;
+            --brand-800: #065f46;
+            --brand-900: #064e3b;
+            --brand-950: #022c22;
         }
 
-        .profile-card {
-            width: 100%;
-            max-width: 900px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
-            backdrop-filter: blur(18px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            overflow: hidden;
+        /* Rose/Pink Theme */
+        :root[data-theme="rose"] {
+            --brand-50: #fff1f2;
+            --brand-100: #ffe4e6;
+            --brand-200: #fecdd3;
+            --brand-300: #fda4af;
+            --brand-400: #fb7185;
+            --brand-500: #f43f5e;
+            --brand-600: #e11d48;
+            --brand-700: #be123c;
+            --brand-800: #9f1239;
+            --brand-900: #881337;
+            --brand-950: #4c0519;
         }
+    </style>
 
-        .profile-photo {
-            background: linear-gradient(160deg, var(--violet-main), var(--violet-dark));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-        }
-
-        .photo-wrapper {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
-            border: 4px solid rgba(255, 255, 255, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .photo-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .profile-content {
-            padding: 48px;
-            display: flex;
-            flex-direction: column;
-            gap: 28px;
-        }
-
-        .profile-header h1 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        .profile-header p {
-            margin-top: 8px;
-            font-size: 1.05rem;
-            color: rgba(255, 255, 255, 0.85);
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .info-item {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 18px 20px;
-        }
-
-        .info-item span {
-            display: block;
-            font-size: 0.8rem;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 6px;
-        }
-
-        .info-item strong {
-            font-size: 1.05rem;
-            font-weight: 600;
-        }
-
-        .footer-note {
-            margin-top: auto;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.75);
-        }
-
-        @media (max-width: 768px) {
-            .profile-card {
-                grid-template-columns: 1fr;
-            }
-
-            .profile-photo {
-                padding: 32px;
-            }
-
-            .profile-content {
-                padding: 32px;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: 'var(--brand-50)',
+                            100: 'var(--brand-100)',
+                            200: 'var(--brand-200)',
+                            300: 'var(--brand-300)',
+                            400: 'var(--brand-400)',
+                            500: 'var(--brand-500)',
+                            600: 'var(--brand-600)',
+                            700: 'var(--brand-700)',
+                            800: 'var(--brand-800)',
+                            900: 'var(--brand-900)',
+                            950: 'var(--brand-950)',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
             }
         }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-panel {
+                @apply bg-white/70 shadow-lg border border-slate-200 backdrop-blur-xl dark:bg-slate-900/50 dark:border-white/10 dark:shadow-2xl;
+            }
+            .glass-item {
+                @apply bg-white/80 shadow border border-slate-200 hover:bg-white transition-colors duration-300 backdrop-blur-md dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10;
+            }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        .dark ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: var(--brand-700); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--brand-600); }
     </style>
 </head>
 
-<body>
-    <div class="profile-card">
-        <div class="profile-photo">
-            <div class="photo-wrapper">
-                <!-- Ganti src dengan foto Anda -->
-                <img src="https://faruq.dwisma.id/img/profile.jpeg" alt="Foto Profil Muchamad Faruq">
-            </div>
+<!-- We apply default values that adapt automatically based on 'dark' class -->
+
+<body
+    class="bg-slate-50 text-slate-700 dark:bg-slate-950 dark:text-slate-300 antialiased selection:bg-brand-600 selection:text-white relative overflow-x-hidden min-h-screen transition-colors duration-500">
+
+    <!-- Ambient Background Blobs (Visible clearly in dark mode, lightened in light mode) -->
+    <div class="fixed inset-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div
+            class="absolute top-0 -left-4 w-72 h-72 bg-brand-600 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-30 dark:opacity-20 animate-blob">
         </div>
+        <div
+            class="absolute top-0 -right-4 w-72 h-72 bg-brand-400 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-30 dark:opacity-20 animate-blob animation-delay-2000">
+        </div>
+        <div
+            class="absolute -bottom-8 left-20 w-72 h-72 bg-brand-700 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-30 dark:opacity-20 animate-blob animation-delay-4000">
+        </div>
+    </div>
 
-        <div class="profile-content">
-            <div class="profile-header">
-                <h1>Muchamad Faruq</h1>
-                <p>Guru Sosiologi • SMA Negeri 2 Mengwi</p>
+    <!-- Theme Settings Panel -->
+    <div id="theme-panel"
+        class="fixed top-1/2 right-0 -translate-y-1/2 translate-x-full z-[100] transition-transform duration-300 flex">
+        <!-- Toggle Button -->
+        <button id="theme-toggle-btn"
+            class="absolute -left-12 top-4 w-12 h-12 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-l-xl shadow-lg flex items-center justify-center text-slate-800 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">
+            <i class='bx bx-cog text-2xl animate-[spin_4s_linear_infinite]'></i>
+        </button>
+
+        <!-- Panel Content -->
+        <div
+            class="w-64 bg-white dark:bg-slate-900 border-l border-t border-b border-slate-200 dark:border-white/10 shadow-2xl p-6 rounded-l-2xl">
+            <h3 class="font-bold text-lg mb-4 text-slate-900 dark:text-white">Pengaturan UI</h3>
+
+            <!-- Light/Dark Mode Switch -->
+            <div class="mb-6">
+                <span
+                    class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-3">Tampilan
+                    (Mode)</span>
+                <div class="flex gap-2">
+                    <button onclick="setThemeMode('light')"
+                        class="flex-1 py-2 rounded-lg border border-slate-200 dark:border-white/10 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-800 dark:text-white flex items-center justify-center gap-1">
+                        <i class='bx bx-sun'></i> Terang
+                    </button>
+                    <button onclick="setThemeMode('dark')"
+                        class="flex-1 py-2 rounded-lg border border-slate-200 dark:border-white/10 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-800 dark:text-white flex items-center justify-center gap-1">
+                        <i class='bx bx-moon'></i> Gelap
+                    </button>
+                </div>
             </div>
 
-            <div class="info-grid">
-                <div class="info-item">
-                    <span>Tempat, Tanggal Lahir</span>
-                    <strong>Jakarta, 26 Maret 1996</strong>
+            <!-- Color Palette Switch -->
+            <div>
+                <span
+                    class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-3">Warna
+                    Aksen</span>
+                <div class="grid grid-cols-4 gap-3">
+                    <button onclick="setColorTheme('violet')"
+                        class="w-full aspect-square rounded-full bg-[#6a1fb0] hover:scale-110 transition-transform ring-2 ring-offset-2 ring-transparent ring-offset-white dark:ring-offset-slate-900 focus:ring-[#6a1fb0]"
+                        title="Violet"></button>
+                    <button onclick="setColorTheme('blue')"
+                        class="w-full aspect-square rounded-full bg-[#2563eb] hover:scale-110 transition-transform ring-2 ring-offset-2 ring-transparent ring-offset-white dark:ring-offset-slate-900 focus:ring-[#2563eb]"
+                        title="Blue"></button>
+                    <button onclick="setColorTheme('emerald')"
+                        class="w-full aspect-square rounded-full bg-[#059669] hover:scale-110 transition-transform ring-2 ring-offset-2 ring-transparent ring-offset-white dark:ring-offset-slate-900 focus:ring-[#059669]"
+                        title="Emerald"></button>
+                    <button onclick="setColorTheme('rose')"
+                        class="w-full aspect-square rounded-full bg-[#e11d48] hover:scale-110 transition-transform ring-2 ring-offset-2 ring-transparent ring-offset-white dark:ring-offset-slate-900 focus:ring-[#e11d48]"
+                        title="Rose"></button>
                 </div>
-                <div class="info-item">
-                    <span>Jenis Kelamin</span>
-                    <strong>Laki-laki</strong>
-                </div>
-                <div class="info-item">
-                    <span>Mata Pelajaran</span>
-                    <strong>Sosiologi</strong>
-                </div>
-                <div class="info-item">
-                    <span>Institusi</span>
-                    <strong>SMA Negeri 2 Mengwi</strong>
-                </div>
-            </div>
-
-            <div class="footer-note">
-                Profil profesional pendidik dengan fokus pada pengembangan pemikiran kritis dan kesadaran sosial.
             </div>
         </div>
     </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-panel !border-t-0 !border-l-0 !border-r-0 !rounded-none">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#"
+                class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-indigo-600 dark:from-brand-400 dark:to-indigo-400">MF.</a>
+            <div class="hidden md:flex gap-8 text-sm font-medium">
+                <a href="#tentang" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Tentang</a>
+                <a href="#pengalaman"
+                    class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Pengalaman</a>
+                <a href="#proyek"
+                    class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Karya/Proyek</a>
+                <a href="#pendidikan"
+                    class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Pendidikan</a>
+                <a href="#keahlian"
+                    class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Keahlian</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button
+                class="md:hidden text-2xl text-slate-800 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white transition-colors">
+                <i class='bx bx-menu'></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 pt-32 pb-20">
+
+        <!-- HEADER / HERO SECTION -->
+        <section id="hero"
+            class="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-20 mb-32 opacity-0 animate-fade-in-up"
+            style="animation-delay: 0.2s;">
+            <div class="flex-1 text-center lg:text-left">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 dark:bg-brand-900/40 border border-brand-200 dark:border-brand-500/30 text-brand-700 dark:text-brand-300 text-sm font-medium mb-6">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Tersedia untuk Peluang Baru
+                </div>
+                <h1 class="text-5xl lg:text-6xl font-bold leading-tight mb-6 text-slate-900 dark:text-white">
+                    Halo, Saya <br />
+                    <span
+                        class="bg-clip-text text-transparent bg-gradient-to-r from-brand-600 via-brand-500 to-indigo-600 dark:from-brand-400 dark:via-brand-500 dark:to-indigo-400">Muchamad
+                        Faruq, S.Pd., Gr.</span>
+                </h1>
+                <h2 class="text-2xl lg:text-3xl font-medium text-slate-600 dark:text-slate-400 mb-6">
+                    Guru Sosiologi | Network Engineer | Software Engineer
+                </h2>
+                <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                    Profesional serbabisa dengan pengalaman tangguh di bidang Infrastruktur Jaringan &amp; Rekayasa
+                    Perangkat Lunak, serta memiliki keahlian pedagogis sebagai Guru Sosiologi. Menggabungkan dua
+                    disiplin ilmu untuk menciptakan inovasi ekosistem digital dalam dunia pendidikan yang berpusat pada
+                    siswa.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                    <a href="mailto:muchamad.faruq@gmail.com"
+                        class="px-8 py-4 w-full sm:w-auto rounded-xl bg-brand-600 hover:bg-brand-700 dark:hover:bg-brand-500 text-white font-semibold transition-all shadow-lg hover:shadow-brand-500/25 flex items-center justify-center gap-2">
+                        <i class='bx bx-envelope text-xl'></i> Hubungi Saya
+                    </a>
+                    <a href="#"
+                        class="px-8 py-4 w-full sm:w-auto rounded-xl glass-item text-slate-800 dark:text-white font-semibold flex items-center justify-center gap-2 group">
+                        <i class='bx bx-download text-xl group-hover:-translate-y-1 transition-transform'></i> Unduh CV
+                        (.pdf)
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative w-64 h-[22rem] lg:w-80 lg:h-[28rem] shrink-0">
+                <!-- Decorative glow behind image -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-tr from-brand-600 to-indigo-500 rounded-3xl blur-2xl opacity-40">
+                </div>
+                <!-- Profile Image -->
+                <div
+                    class="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl z-10 p-2 glass-panel border-0">
+                    <img src="img/profile.jpg" alt="Foto Profil Muchamad Faruq"
+                        class="w-full h-full object-cover object-top rounded-2xl hover:scale-[1.02] transition-transform duration-500">
+                </div>
+                <!-- Floating badge -->
+                <div
+                    class="absolute -bottom-6 -left-6 z-20 glass-panel rounded-2xl p-4 flex items-center gap-3 animate-[bounce_5s_infinite]">
+                    <div
+                        class="w-12 h-12 rounded-full bg-brand-100 dark:bg-brand-600/20 flex items-center justify-center text-brand-600 dark:text-brand-400">
+                        <i class='bx bx-book-open text-2xl'></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400">Mata Pelajaran</div>
+                        <div class="font-bold text-slate-900 dark:text-white text-sm">Sosiologi</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DATA DIRI / ABOUT SECTION -->
+        <section id="tentang" class="mb-32 scroll-mt-24 opacity-0 animate-fade-in-up" style="animation-delay: 0.4s;">
+            <div class="flex items-center gap-4 mb-10">
+                <div class="h-px bg-slate-200 dark:bg-white/10 flex-1"></div>
+                <h3 class="text-3xl font-bold text-slate-900 dark:text-white">Informasi Pribadi</h3>
+                <div class="h-px bg-slate-200 dark:bg-white/10 flex-1"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Info Grid items -->
+                <div class="glass-panel p-6 rounded-2xl flex flex-col gap-2 hover:-translate-y-1 transition-transform">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-2">
+                        <i class='bx bx-calendar text-2xl'></i>
+                    </div>
+                    <span
+                        class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">Tempat,
+                        Tanggal Lahir</span>
+                    <strong class="text-lg text-slate-900 dark:text-white font-medium">Jakarta, 26 Maret 1996</strong>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl flex flex-col gap-2 hover:-translate-y-1 transition-transform">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-2">
+                        <i class='bx bx-user text-2xl'></i>
+                    </div>
+                    <span
+                        class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">Jenis
+                        Kelamin</span>
+                    <strong class="text-lg text-slate-900 dark:text-white font-medium">Laki-laki</strong>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl flex flex-col gap-2 hover:-translate-y-1 transition-transform">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-2">
+                        <i class='bx bx-current-location text-2xl'></i>
+                    </div>
+                    <span
+                        class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">Institusi
+                        Saat Ini</span>
+                    <strong class="text-lg text-slate-900 dark:text-white font-medium">SMA Negeri 2 Mengwi</strong>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl flex flex-col gap-2 hover:-translate-y-1 transition-transform">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-2">
+                        <i class='bx bx-map text-2xl'></i>
+                    </div>
+                    <span class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">Asal
+                        / Domisili</span>
+                    <strong class="text-lg text-slate-900 dark:text-white font-medium">Asal Jakarta, Berdomisili di
+                        Bali</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE SECTION -->
+        <section id="pengalaman" class="mb-32 scroll-mt-24 opacity-0 animate-fade-in-up" style="animation-delay: 0.6s;">
+            <div class="flex items-center gap-4 mb-12">
+                <h3 class="text-3xl font-bold text-slate-900 dark:text-white shrink-0">Pengalaman Kerja</h3>
+                <div class="h-px bg-gradient-to-r from-brand-600/50 to-transparent flex-1"></div>
+            </div>
+
+            <div class="relative border-l border-slate-300 dark:border-white/10 ml-4 md:ml-6 space-y-12 pb-4">
+
+                <!-- Experience Item 1 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <!-- Dot -->
+                    <div
+                        class="absolute -left-2 top-1.5 w-4 h-4 rounded-full bg-brand-500 shadow-[0_0_10px_var(--brand-500)] ring-4 ring-slate-50 dark:ring-slate-950">
+                    </div>
+                    <div
+                        class="glass-panel p-8 rounded-2xl relative overflow-hidden dark:hover:bg-white/10 transition-colors">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-600/10 rounded-bl-full -z-10"></div>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                            <div>
+                                <h4 class="text-xl font-bold text-slate-900 dark:text-white">Guru Sosiologi</h4>
+                                <h5 class="text-brand-600 dark:text-brand-400 font-medium text-sm sm:text-base">SMA
+                                    Negeri 2 Mengwi</h5>
+                            </div>
+                            <div
+                                class="px-3 py-1 rounded-md bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
+                                2024 - Sekarang
+                            </div>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm md:text-base mb-4">
+                            Merencanakan dan melaksanakan kegiatan pembelajaran Sosiologi dengan pendekatan inovatif.
+                            Mengevaluasi hasil belajar siswa dan memberikan bimbingan untuk pengembangan karakter serta
+                            kesadaran sosial siswa.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="text-xs px-2 py-1 rounded-md bg-white border border-slate-200 dark:bg-white/5 dark:border-white/10 dark:text-slate-300">Pengajaran</span>
+                            <span
+                                class="text-xs px-2 py-1 rounded-md bg-white border border-slate-200 dark:bg-white/5 dark:border-white/10 dark:text-slate-300">Kurikulum
+                                Merdeka</span>
+                            <span
+                                class="text-xs px-2 py-1 rounded-md bg-white border border-slate-200 dark:bg-white/5 dark:border-white/10 dark:text-slate-300">Wali
+                                Kelas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item 2 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div
+                        class="absolute -left-2 top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-slate-50 dark:ring-slate-950 group-hover:bg-brand-400 transition-colors">
+                    </div>
+                    <div
+                        class="glass-panel p-8 rounded-2xl relative overflow-hidden dark:hover:bg-white/10 transition-colors">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                            <div>
+                                <h4 class="text-xl font-bold text-slate-900 dark:text-white">Self Driver</h4>
+                                <h5 class="text-brand-600 dark:text-brand-400 font-medium text-sm sm:text-base">Agung
+                                    Citra Transformasi</h5>
+                            </div>
+                            <div
+                                class="px-3 py-1 rounded-md bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
+                                2018 - 2024
+                            </div>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm md:text-base">
+                            Bertanggung jawab secara profesional dan mandiri atas kelancaran mobilitas operasional (Self
+                            Driver) dengan dedikasi serta rekam jejak yang solid selama 6 tahun masa pengabdian.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="proyek" class="mb-32 scroll-mt-24 opacity-0 animate-fade-in-up" style="animation-delay: 0.7s;">
+            <div class="flex items-center gap-4 mb-12">
+                <div class="h-px bg-slate-200 dark:bg-white/10 flex-1"></div>
+                <h3 class="text-3xl font-bold text-slate-900 dark:text-white shrink-0">Proyek & Karya Web</h3>
+                <div class="h-px bg-slate-200 dark:bg-white/10 flex-1"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project 1 -->
+                <div
+                    class="glass-panel p-6 rounded-2xl group flex flex-col h-full hover:-translate-y-2 hover:shadow-brand-500/20 transition-all duration-300">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-brand-100 dark:bg-brand-900/60 flex items-center justify-center text-brand-600 dark:text-brand-400 mb-6 border border-brand-200 dark:border-brand-500/30">
+                        <i class='bx bx-laptop text-3xl'></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">E-Learning Sosiologi</h4>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-6 flex-1">
+                        Pengembangan platform digital khusus pembelajaran Sosiologi interaktif untuk mempraktekkan
+                        pengajaran e-learning.
+                    </p>
+                    <a href="https://sosiologi.dwisma.id" target="_blank"
+                        class="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 hover:text-brand-800 dark:hover:text-brand-300 font-medium text-sm transition-colors mt-auto">
+                        sosiologi.dwisma.id <i
+                            class='bx bx-right-arrow-alt text-lg group-hover:translate-x-1 transition-transform'></i>
+                    </a>
+                </div>
+
+                <!-- Project 2 -->
+                <div
+                    class="glass-panel p-6 rounded-2xl group flex flex-col h-full hover:-translate-y-2 hover:shadow-brand-500/20 transition-all duration-300">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-brand-100 dark:bg-brand-900/60 flex items-center justify-center text-brand-600 dark:text-brand-400 mb-6 border border-brand-200 dark:border-brand-500/30">
+                        <i class='bx bx-compass text-3xl'></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Sispala Website</h4>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-6 flex-1">
+                        Platform informasi terpadu dan portal dokumentasi kegiatan ekskul Siswa Pecinta Alam (Sispala)
+                        sekolah.
+                    </p>
+                    <a href="https://sispala.dwisma.id" target="_blank"
+                        class="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 hover:text-brand-800 dark:hover:text-brand-300 font-medium text-sm transition-colors mt-auto">
+                        sispala.dwisma.id <i
+                            class='bx bx-right-arrow-alt text-lg group-hover:translate-x-1 transition-transform'></i>
+                    </a>
+                </div>
+
+                <!-- Project 3 -->
+                <div
+                    class="glass-panel p-6 rounded-2xl group flex flex-col h-full hover:-translate-y-2 hover:shadow-brand-500/20 transition-all duration-300">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-brand-100 dark:bg-brand-900/60 flex items-center justify-center text-brand-600 dark:text-brand-400 mb-6 border border-brand-200 dark:border-brand-500/30">
+                        <i class='bx bx-globe text-3xl'></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Portal Utama Dwisma</h4>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-6 flex-1">
+                        Pembangunan dan pengelolaan infrastruktur resmi portal informasi digital SMA Negeri 2 Mengwi.
+                    </p>
+                    <a href="https://dwisma.id" target="_blank"
+                        class="inline-flex items-center gap-2 text-brand-600 dark:text-brand-400 hover:text-brand-800 dark:hover:text-brand-300 font-medium text-sm transition-colors mt-auto">
+                        dwisma.id <i
+                            class='bx bx-right-arrow-alt text-lg group-hover:translate-x-1 transition-transform'></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <a href="https://github.com/muchamadfaruq" target="_blank"
+                    class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-300 dark:border-white/10 bg-white dark:bg-transparent hover:bg-slate-50 dark:hover:bg-white/10 text-slate-700 dark:text-slate-300 dark:hover:text-white transition-colors text-sm font-medium shadow-sm">
+                    <i class='bx bxl-github text-lg'></i> Lihat Repositori GitHub
+                </a>
+            </div>
+        </section>
+
+        <!-- EDUCATION SECTION -->
+        <section id="pendidikan" class="mb-32 scroll-mt-24 opacity-0 animate-fade-in-up" style="animation-delay: 0.8s;">
+            <div class="flex items-center gap-4 mb-12">
+                <div class="h-px bg-gradient-to-l from-brand-600/50 to-transparent flex-1"></div>
+                <h3 class="text-3xl font-bold text-slate-900 dark:text-white shrink-0">Riwayat Pendidikan</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Edu Item 1 -->
+                <div class="glass-panel p-8 rounded-2xl flex flex-col gap-4">
+                    <div
+                        class="w-12 h-12 rounded-full bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 flex items-center justify-center border border-brand-200 dark:border-brand-500/30">
+                        <i class='bx bxs-graduation text-2xl'></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-slate-900 dark:text-white">Pendidikan Profesi Guru (Gr.)</h4>
+                        <h5 class="text-brand-600 dark:text-brand-400 font-medium text-sm">Universitas Hamzanwadi</h5>
+                    </div>
+                </div>
+
+                <!-- Edu Item 2 -->
+                <div class="glass-panel p-8 rounded-2xl flex flex-col gap-4">
+                    <div
+                        class="w-12 h-12 rounded-full bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 flex items-center justify-center border border-brand-200 dark:border-brand-500/30">
+                        <i class='bx bxs-graduation text-2xl'></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-slate-900 dark:text-white">S1 Pendidikan Sosiologi (S.Pd.)
+                        </h4>
+                        <h5 class="text-brand-600 dark:text-brand-400 font-medium text-sm">Universitas Mataram</h5>
+                    </div>
+                </div>
+
+                <!-- Edu Item 3 -->
+                <div class="glass-panel p-8 rounded-2xl flex flex-col gap-4">
+                    <div
+                        class="w-12 h-12 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center border border-slate-300 dark:border-white/5">
+                        <i class='bx bx-building-house text-2xl'></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-slate-900 dark:text-white">SMA Negeri 35 Jakarta</h4>
+                        <h5 class="text-slate-600 dark:text-slate-400 font-medium text-sm">Sekolah Menengah Atas</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATION SECTION -->
+        <section id="sertifikasi" class="mb-32 scroll-mt-24 opacity-0 animate-fade-in-up"
+            style="animation-delay: 0.9s;">
+            <div class="flex items-center gap-4 mb-10">
+                <h3 class="text-3xl font-bold text-slate-900 dark:text-white shrink-0">Lisensi & Sertifikasi</h3>
+                <div class="h-px bg-gradient-to-r from-brand-600/50 to-transparent flex-1"></div>
+            </div>
+
+            <div class="flex flex-col gap-4">
+                <div
+                    class="glass-panel p-6 rounded-2xl flex flex-col md:flex-row md:items-center gap-5 hover:-translate-y-1 transition-transform">
+                    <div
+                        class="w-14 h-14 rounded-full bg-brand-100 dark:bg-brand-900/50 border border-brand-200 dark:border-brand-500/30 text-brand-600 dark:text-brand-400 flex items-center justify-center shrink-0">
+                        <i class='bx bx-certification text-3xl'></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-1">Sertifikasi Pendidikan
+                            Sosiologi (Sertifikat Pendidik)</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Pengakuan profesional dan kelayakan
+                            akademik berlisensi sebagai tenaga pendidik untuk mata pelajaran Sosiologi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="keahlian" class="mb-32 scroll-mt-24 opacity-0 animate-fade-in-up" style="animation-delay: 1.0s;">
+            <div class="glass-panel p-10 md:p-14 rounded-[2rem] relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-brand-500/20 dark:bg-brand-500/10 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 w-64 h-64 bg-indigo-500/20 dark:bg-indigo-500/10 rounded-full blur-3xl -z-10 -translate-x-1/2 translate-y-1/2">
+                </div>
+
+                <h3 class="text-3xl font-bold text-slate-900 dark:text-white mb-8 text-center">Keahlian & Kompetensi
+                </h3>
+
+                <div class="flex flex-wrap justify-center gap-4">
+                    <!-- Technical/Hard Skills -->
+                    <div
+                        class="px-5 py-3 rounded-xl glass-item border-brand-500/30 text-slate-800 dark:text-white font-medium flex items-center gap-2">
+                        <i class='bx bx-code-alt text-brand-600 dark:text-brand-400 text-xl'></i> Software Engineering
+                    </div>
+                    <div
+                        class="px-5 py-3 rounded-xl glass-item border-brand-500/30 text-slate-800 dark:text-white font-medium flex items-center gap-2">
+                        <i class='bx bx-network-chart text-brand-600 dark:text-brand-400 text-xl'></i> Network
+                        Engineering
+                    </div>
+                    <div
+                        class="px-5 py-3 rounded-xl glass-item border-brand-500/30 text-slate-800 dark:text-white font-medium flex items-center gap-2">
+                        <i class='bx bx-check text-brand-600 dark:text-brand-400 text-xl'></i> Perancangan Pembelajaran
+                    </div>
+                    <div
+                        class="px-5 py-3 rounded-xl glass-item border-brand-500/30 text-slate-800 dark:text-white font-medium flex items-center gap-2">
+                        <i class='bx bx-check text-brand-600 dark:text-brand-400 text-xl'></i> Evaluasi Pendidikan
+                    </div>
+                    <div
+                        class="px-5 py-3 rounded-xl glass-item border-brand-500/30 text-slate-800 dark:text-white font-medium flex items-center gap-2">
+                        <i class='bx bx-check text-brand-600 dark:text-brand-400 text-xl'></i> Pengembangan Kurikulum
+                    </div>
+                    <div
+                        class="px-5 py-3 rounded-xl glass-item border-brand-500/30 text-slate-800 dark:text-white font-medium flex items-center gap-2">
+                        <i class='bx bx-check text-brand-600 dark:text-brand-400 text-xl'></i> Penelitian Sosial
+                    </div>
+                    <!-- Soft Skills -->
+                    <div
+                        class="px-5 py-3 rounded-xl glass-item text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                        Komunikasi Publik
+                    </div>
+                    <div
+                        class="px-5 py-3 rounded-xl glass-item text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                        Berpikir Kritis
+                    </div>
+                    <div
+                        class="px-5 py-3 rounded-xl glass-item text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                        Kepemimpinan
+                    </div>
+                    <div
+                        class="px-5 py-3 rounded-xl glass-item text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                        Manajemen Kelas
+                    </div>
+                    <div
+                        class="px-5 py-3 rounded-xl glass-item text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                        Kolaborasi Tim
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER / CONTACT -->
+    <footer id="kontak"
+        class="border-t border-slate-200 dark:border-white/5 bg-slate-50/80 dark:bg-slate-950/50 backdrop-blur-lg pt-16 pb-8">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+                <div class="text-center md:text-left">
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Mari Terhubung!</h2>
+                    <p class="text-slate-600 dark:text-slate-400">Terbuka untuk kolaborasi, diskusi, maupun peluang
+                        profesional.</p>
+                </div>
+                <div class="flex gap-4">
+                    <a href="https://github.com/muchamadfaruq" target="_blank"
+                        class="w-12 h-12 rounded-full glass-item flex items-center justify-center text-slate-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 hover:-translate-y-1 transition-all">
+                        <i class='bx bxl-github text-2xl'></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/muchamad-faruq-4a41a496/" target="_blank"
+                        class="w-12 h-12 rounded-full glass-item flex items-center justify-center text-slate-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 hover:-translate-y-1 transition-all">
+                        <i class='bx bxl-linkedin text-2xl'></i>
+                    </a>
+                    <a href="mailto:muchamad.faruq@gmail.com"
+                        class="w-12 h-12 rounded-full glass-item flex items-center justify-center text-slate-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 hover:-translate-y-1 transition-all">
+                        <i class='bx bx-envelope text-2xl'></i>
+                    </a>
+                    <a href="https://instagram.com/payuq" target="_blank"
+                        class="w-12 h-12 rounded-full glass-item flex items-center justify-center text-slate-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 hover:-translate-y-1 transition-all">
+                        <i class='bx bxl-instagram text-2xl'></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="h-px bg-slate-200 dark:bg-white/5 w-full mb-8"></div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+                <p>&copy; 2024 Muchamad Faruq. All rights reserved.</p>
+                <p>Designed with Tailwind CSS</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. Animation Observer ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        // --- 2. Theme Settings Panel Logic ---
+        const themeBtn = document.getElementById('theme-toggle-btn');
+        const themePanel = document.getElementById('theme-panel');
+        let isPanelOpen = false;
+
+        // Toggle Settings Panel
+        themeBtn.addEventListener('click', () => {
+            isPanelOpen = !isPanelOpen;
+            if (isPanelOpen) {
+                themePanel.classList.remove('translate-x-full');
+            } else {
+                themePanel.classList.add('translate-x-full');
+            }
+        });
+
+        // Toggle Dark/Light Mode
+        function setThemeMode(mode) {
+            const html = document.documentElement;
+            if (mode === 'dark') {
+                html.classList.add('dark');
+            } else {
+                html.classList.remove('dark');
+            }
+        }
+
+        // Toggle Color Brand
+        function setColorTheme(color) {
+            document.documentElement.setAttribute('data-theme', color);
+        }
+    </script>
 </body>
 
 </html>
