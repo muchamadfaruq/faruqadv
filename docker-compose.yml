@@ -1,0 +1,16 @@
+services:
+  portofolio:
+    image: nginx:alpine
+    container_name: portofolio
+    ports:
+      - '127.0.0.1:8089:80'
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html:ro
+      - ./CNAME:/usr/share/nginx/html/CNAME:ro
+      - ./img:/usr/share/nginx/html/img:ro
+    restart: unless-stopped
+    networks:
+      - nginx-proxy-manager_default
+networks:
+  nginx-proxy-manager_default:
+    external: true
