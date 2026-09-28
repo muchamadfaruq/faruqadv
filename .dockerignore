@@ -1,0 +1,14 @@
+#git assets
+.git
+.gitignore
+.gitattributes
+.github
+
+#web assets
+README.md
+CNAME
+
+# Docker assets
+Dockerfile
+docker-compose*.yml
+.dockerignore
